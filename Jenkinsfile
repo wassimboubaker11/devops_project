@@ -1,6 +1,6 @@
 pipeline{
    environment{
-      registry = 'wassim/achat'
+      registry = 'wassim11/achat'
       registryCredential= 'dockerId'
       dockerImage = ''
    }
