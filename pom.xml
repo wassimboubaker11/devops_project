@@ -161,6 +161,7 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
             </executions>
          </plugin>
       </plugins>
+      <finalName>spring-boot-docker</finalName>
    </build>
    <distributionManagement>
       <snapshotRepository>
