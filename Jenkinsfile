@@ -1,6 +1,6 @@
 pipeline{
    environment{
-      registry = 'Wassim/achat'
+      registry = 'wassim/achat'
       registryCredential= 'dockerId'
       dockerImage = ''
    }
@@ -11,7 +11,7 @@ pipeline{
          steps{
             echo 'Pulling...';
                git branch: 'main',
-               url : 'https://github.com/wassimboubaker11/devops',
+               url : 'https://github.com/wassimboubaker11/devops.git',
                credentialsId: 'gitID';
          }
       }
