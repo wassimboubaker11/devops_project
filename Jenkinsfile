@@ -36,13 +36,21 @@ pipeline{
          }
       }
 
-      stage ('sonarQube'){
-         steps{
-         withSonarQubeEnv(installationName: 'sonar'){
-            sh "mvn sonar:sonar"
+      stage('SonarQube Analysis'){
+            steps {
+                withSonarQubeEnv(credentialsId: 'sonarqueID',installationName: 'sonarq') {
+                    sh """
+                        mvn sonar:sonar \
+			-D sonar.login=admin \
+                        -D sonar.password=azerty \
+			-D sonar.projectKey=org.springframework.boot \
+                        
+                    """
+                }
+                    
             }
-         }
-      }
+                
+        }
 
       stage ('nexus deploiment'){
        steps{
