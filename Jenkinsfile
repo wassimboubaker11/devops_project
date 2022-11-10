@@ -87,15 +87,6 @@ pipeline{
             }
          }
       }
-
-     
-	   stage ('run container'){
-            steps{
-                
-                                sh 'docker-compose up -d --build'
-            }
-        }
-
 	   
  
 }
