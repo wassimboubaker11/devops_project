@@ -16,6 +16,12 @@ pipeline{
          }
       }
 	   
+	   stage ('run container'){
+            steps{
+                
+                                sh 'docker-compose up -d --build'
+            }
+        }
 
 
       stage ("maven clean"){
@@ -25,7 +31,7 @@ pipeline{
          }
 
       }
-	    stage('MCN COMPILE')
+	    stage('MVN COMPILE')
             {
                 steps{
                 sh  'mvn compile'
@@ -94,17 +100,7 @@ pipeline{
          }
       }
 	   
-      stage ('run container'){
-            steps{
-                
-                                sh 'docker-compose up -d --build'
-            }
-        }
-	   stage('test'){
-                                   steps{
-                                       sh 'mvn test'
-                                   }
-                               }
+ 
 }
 
    post{
