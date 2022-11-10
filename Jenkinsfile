@@ -16,13 +16,7 @@ pipeline{
          }
       }
 	   
-	   stage ('run container'){
-            steps{
-                
-                                sh 'docker-compose up -d --build'
-            }
-        }
-
+	  
 
       stage ("maven clean"){
          steps{
@@ -99,6 +93,13 @@ pipeline{
             sh "docker rmi $registry:$BUILD_NUMBER"
          }
       }
+	   stage ('run container'){
+            steps{
+                
+                                sh 'docker-compose up -d --build'
+            }
+        }
+
 	   
  
 }
