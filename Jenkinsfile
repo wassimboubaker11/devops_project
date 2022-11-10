@@ -15,18 +15,27 @@ pipeline{
                credentialsId: 'gitID';
          }
       }
+	   
 
 
       stage ("maven clean"){
          steps{
             sh "mvn clean"
+	
          }
 
       }
+	    stage('MCN COMPILE')
+            {
+                steps{
+                sh  'mvn compile'
+                }
+            }
 
       stage ('creation artifact'){
          steps{
             sh "mvn package -Dmaven.test.skip=true"
+	    sh 'mvn install'
          }
       }
 
@@ -84,6 +93,18 @@ pipeline{
             sh "docker rmi $registry:$BUILD_NUMBER"
          }
       }
+	   
+      stage ('run container'){
+            steps{
+                
+                                sh 'docker-compose up -d --build'
+            }
+        }
+	   stage('test'){
+                                   steps{
+                                       sh 'mvn test'
+                                   }
+                               }
 }
 
    post{
