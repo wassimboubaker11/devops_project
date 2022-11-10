@@ -63,7 +63,7 @@ pipeline{
 
       stage ('nexus deploiment'){
        steps{
-			nexusArtifactUploader artifacts: [[artifactId: 'achat', file: 'target/achat-1.0.jar', type: 'jar']], credentialsId: 'nexusID', groupId: 'tn.esprit.rh', nexusUrl: '192.168.1.22:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-releases', version: '2.0'
+			nexusArtifactUploader artifacts: [[artifactId: 'achat', file: 'target/achat-2.0.jar', type: 'jar']], credentialsId: 'nexusID', groupId: 'tn.esprit.rh', nexusUrl: '192.168.1.22:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-releases', version: '2.0'
 			}
 		}
      
