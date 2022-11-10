@@ -88,11 +88,7 @@ pipeline{
          }
       }
 
-      stage('clean'){
-         steps{
-            sh "docker rmi $registry:$BUILD_NUMBER"
-         }
-      }
+     
 	   stage ('run container'){
             steps{
                 
