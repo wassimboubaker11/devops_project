@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+package tn.esprit.rh.achat;
 
 
 import com.esprit.examen.entities.Stock;
