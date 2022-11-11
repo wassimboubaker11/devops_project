@@ -61,13 +61,7 @@ pipeline{
                 
         }
 
-      stage ('nexus deploiment'){
-       steps{
-			nexusArtifactUploader artifacts: [[artifactId: 'achat', file: 'target/achat-2.0.jar', type: 'jar']], credentialsId: 'nexusID', groupId: 'tn.esprit.rh', nexusUrl: '192.168.1.22:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-releases', version: '2.0'
-			}
-		}
-     
-     
+    
     
 	   
 	   stage("nexus deploy"){
@@ -76,7 +70,16 @@ pipeline{
                      }
          }
 
-      stage('deploiment image'){
+      
+	    stage('build image'){
+         steps{
+            script{
+               dockerImage= docker.build registry + ":$BUILD_NUMBER"
+            }
+         }
+      }
+	   
+	   stage('deploiment image'){
          steps{
             script{
                docker.withRegistry( '', registryCredential){
@@ -85,6 +88,8 @@ pipeline{
             }
          }
       }
+	   
+	   
 	   stage ('run container'){
             steps{
                 
