@@ -1,8 +1,8 @@
 package tn.esprit.rh.achat;
 
 
-import com.esprit.examen.entities.Stock;
-import com.esprit.examen.repositories.StockRepository;
+import tn.esprit.rh.entities.Stock;
+import tn.esprit.rh.repositories.StockRepository;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
